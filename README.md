@@ -1,6 +1,6 @@
 # Bus
 
-This project allows you to enter your postcode, then it will provide you with two bus stops that are closest to you, each with next five buses with their waiting time. It only works within the Greater London area. 
+This project allows the user to enter a postocde, which is then validated, and displays information for the next five buses to arrive at the two bus stopes closest to the postcode entered. It makes use of the tfl api's and therefore only works within the Greater London area. 
 
 ## Set up
-Just run `npm install` to set up dependencies, then `npm start` to run the project. 
+Run `npm install` to set up dependencies, and `npm start` to run the project. 
