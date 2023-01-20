@@ -3,7 +3,7 @@ import readLine from "readLine-sync";
 var postCodeData;
 
 do {
-    console.log("Please enter the postcode, eg NW5+1TL");
+    console.log("Please enter the postcode:");
     const userInput = readLine.prompt();
 
     const postCodeResponse = await fetch(`https://api.postcodes.io/postcodes/${userInput}`);
@@ -26,13 +26,18 @@ for (let i = 0; i < 2; i++) {
 
     const response3 = await fetch(`https://api.tfl.gov.uk/StopPoint/${busStopData.stopPoints[i].id}/Arrivals`);
     const busArrivalData = await response3.json();
+    var arrayLength = busArrivalData.length;
+    if (arrayLength <= 0) {
+        console.log("Sorry, there is no bus.");
+    } else {
 
-    for (let j = 0; j < 5; j++) {
-        let bus = busArrivalData[j];
-        console.log(`
-        bus:${bus.lineName}
+        for (let j = 0; j < arrayLength; j++) {
+            let bus = busArrivalData[j];
+
+            console.log(`bus:${bus.lineName}
         bus destination: ${bus.destinationName}
         time to arrival: ${Math.floor(bus.timeToStation / 60)}minutes and ${bus.timeToStation % 60}seconds`);
 
+        }
     }
 }
